@@ -1,24 +1,14 @@
 import React from 'react';
 import * as UiContext from './contexts/ui';
-import { View, Text, StyleSheet } from 'react-native';
+import Routes from './routes';
 
 const App = () => {
   const [applicationState, setApplicationState] = React.useState(UiContext.createApplicationInitialState());
   return (
     <UiContext.Context.Provider value={{ applicationState, setApplicationState }}>
-      <View style={styles.container}>
-        <Text>Hello World</Text>
-      </View>
+      <Routes />
     </UiContext.Context.Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default App;
