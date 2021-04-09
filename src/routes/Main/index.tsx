@@ -2,8 +2,18 @@ import React from 'react';
 import { createStackNavigator, StackCardInterpolationProps } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { INITIAL, LOADING, HOME, CHOOSE_LOGIN, STATISTICS, USER_INFO, INPUT } from '../../constants/path';
-import { Initial, Loading, ChooseLogin, Input } from '../../components/pages';
+import {
+  INITIAL,
+  LOADING,
+  HOME,
+  CHOOSE_LOGIN,
+  STATISTICS,
+  USER_INFO,
+  INPUT,
+  SIGN_IN,
+  SIGN_UP,
+} from '../../constants/path';
+import { Initial, Loading, ChooseLogin, Input, SignIn, SignUp } from '../../components/pages';
 import Home from './Home';
 import Statistics from './Statistics';
 import UserInfo from './UserInfo';
@@ -11,6 +21,7 @@ import * as UiContext from '../../contexts/ui';
 
 const Stack = createStackNavigator();
 const ModalStack = createStackNavigator();
+const ChooseLoginStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeDrawer = createDrawerNavigator();
 const StatisticsDrawer = createDrawerNavigator();
@@ -76,10 +87,20 @@ const TabWithModalRoutes = () => {
   );
 };
 
+const ChooseLoginNavigator = () => {
+  return (
+    <ChooseLoginStack.Navigator initialRouteName={CHOOSE_LOGIN}>
+      <ChooseLoginStack.Screen name={CHOOSE_LOGIN} component={ChooseLogin} />
+      <ChooseLoginStack.Screen name={SIGN_IN} component={SignIn} />
+      <ChooseLoginStack.Screen name={SIGN_UP} component={SignUp} />
+    </ChooseLoginStack.Navigator>
+  );
+};
+
 const switchingAuthStatus = (status: UiContext.Status) => {
   switch (status) {
     case UiContext.Status.UN_AUTHORIZED:
-      return <Stack.Screen name={CHOOSE_LOGIN} component={ChooseLogin} />;
+      return <Stack.Screen name={CHOOSE_LOGIN} component={ChooseLoginNavigator} />;
     case UiContext.Status.AUTHORIZED:
       return <Stack.Screen name={HOME} component={TabWithModalRoutes} />;
     case UiContext.Status.FIRST_OPEN:
