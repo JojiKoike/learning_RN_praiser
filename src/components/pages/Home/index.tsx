@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { DETAIL } from '../../../constants/path';
+import { DETAIL, INPUT } from '../../../constants/path';
 
 const Home = () => {
   const { navigate } = useNavigation();
@@ -10,6 +10,9 @@ const Home = () => {
       <Text>Home</Text>
       <TouchableOpacity onPress={() => navigate(DETAIL)}>
         <Text>Go to Detail</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigate(INPUT)}>
+        <Text>Open Input</Text>
       </TouchableOpacity>
     </View>
   );
