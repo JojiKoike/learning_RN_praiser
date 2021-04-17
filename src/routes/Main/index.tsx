@@ -47,7 +47,7 @@ const getActiveRouteName = (state: any): string => {
 
 const HomeWithDrawer = () => {
   return (
-    <HomeDrawer.Navigator initialRouteName={HOME}>
+    <HomeDrawer.Navigator initialRouteName={HOME} drawerStyle={drawerStyle} drawerContentOptions={drawerContentOptions}>
       <HomeDrawer.Screen name={HOME} component={Home} />
       <HomeDrawer.Screen name={USER_INFO} component={UserInfo} />
     </HomeDrawer.Navigator>
@@ -56,7 +56,11 @@ const HomeWithDrawer = () => {
 
 const StatisticsWithDrawer = () => {
   return (
-    <StatisticsDrawer.Navigator>
+    <StatisticsDrawer.Navigator
+      initialRouteName={STATISTICS}
+      drawerStyle={drawerStyle}
+      drawerContentOptions={drawerContentOptions}
+    >
       <StatisticsDrawer.Screen name={STATISTICS} component={Statistics} />
       <StatisticsDrawer.Screen name={USER_INFO} component={UserInfo} />
     </StatisticsDrawer.Navigator>
@@ -67,6 +71,13 @@ const TabRoutes = () => {
   return (
     <Tab.Navigator
       initialRouteName={HOME}
+      tabBarOptions={{
+        inactiveTintColor: COLOR.WHITE,
+        activeTintColor: COLOR.PRIMARY,
+        style: {
+          backgroundColor: COLOR.MAIN,
+        },
+      }}
       screenOptions={(props: any) => {
         const routeName = getActiveRouteName(props.route.state);
         return {
@@ -129,6 +140,15 @@ const AuthWithRoutes = () => {
 
 const cardStyle = {
   backgroundColor: COLOR.MAIN,
+};
+
+const drawerStyle = {
+  backgroundColor: COLOR.MAIN,
+};
+
+const drawerContentOptions = {
+  activeTintColor: COLOR.PRIMARY,
+  inactiveTintColor: COLOR.WHITE,
 };
 
 export default AuthWithRoutes;
