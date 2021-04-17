@@ -18,6 +18,8 @@ import Home from './Home';
 import Statistics from './Statistics';
 import UserInfo from './UserInfo';
 import * as UiContext from '../../contexts/ui';
+import { COLOR } from '../../constants/theme';
+import { headerStyle, headerTintColor } from '../Header';
 
 const Stack = createStackNavigator();
 const ModalStack = createStackNavigator();
@@ -80,7 +82,7 @@ const TabRoutes = () => {
 
 const TabWithModalRoutes = () => {
   return (
-    <ModalStack.Navigator mode="modal" headerMode="none">
+    <ModalStack.Navigator mode="modal" headerMode="none" screenOptions={{ cardStyle }}>
       <Stack.Screen name={HOME} component={TabRoutes} />
       <Stack.Screen name={INPUT} component={Input} />
     </ModalStack.Navigator>
@@ -89,7 +91,10 @@ const TabWithModalRoutes = () => {
 
 const ChooseLoginNavigator = () => {
   return (
-    <ChooseLoginStack.Navigator initialRouteName={CHOOSE_LOGIN}>
+    <ChooseLoginStack.Navigator
+      initialRouteName={CHOOSE_LOGIN}
+      screenOptions={{ cardStyle, headerStyle, headerTintColor }}
+    >
       <ChooseLoginStack.Screen name={CHOOSE_LOGIN} component={ChooseLogin} />
       <ChooseLoginStack.Screen name={SIGN_IN} component={SignIn} />
       <ChooseLoginStack.Screen name={SIGN_UP} component={SignUp} />
@@ -120,6 +125,10 @@ const AuthWithRoutes = () => {
       )}
     </Stack.Navigator>
   );
+};
+
+const cardStyle = {
+  backgroundColor: COLOR.MAIN,
 };
 
 export default AuthWithRoutes;
