@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, ImageSourcePropType, StyleSheet, ImageStyle } from 'react-native';
 import { width } from '../../lib/window';
-import reactImage from '../../../assets/reactIcon.jpg';
+import reactImage from '../../../assets/gopher.png';
 
 const edgeNumber = 2;
 const ratio = 3;
