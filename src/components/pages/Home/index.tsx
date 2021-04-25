@@ -55,7 +55,7 @@ const Home = () => {
   }, [navigate]);
   const gotoDetail = React.useCallback(
     (state: Todo.State, isEditable: boolean) => {
-      navigate(DETAIL, { ...State, isEditable });
+      navigate(DETAIL, { ...state, isEditable });
     },
     [navigate],
   );
