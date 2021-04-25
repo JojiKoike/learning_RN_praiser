@@ -27,7 +27,7 @@ interface Props {
   };
 }
 
-const Component = (props: Props) => {
+export function Component(props: Props) {
   const {
     state: { id, isDone },
     actions: { toggleTodo, closeRow },
@@ -41,6 +41,4 @@ const Component = (props: Props) => {
   return (
     <IconButton onPress={onPress} icon={isDone ? 'restore' : 'check'} style={isDone ? styles.done : styles.button} />
   );
-};
-
-export default Component;
+}

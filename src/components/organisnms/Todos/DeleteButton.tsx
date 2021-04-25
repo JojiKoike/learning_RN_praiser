@@ -21,7 +21,7 @@ interface Props {
   };
 }
 
-const Component = (props: Props) => {
+export function Component(props: Props) {
   const {
     state: { id },
     actions: { removeTodo },
@@ -32,6 +32,4 @@ const Component = (props: Props) => {
   }, [id, removeTodo]);
 
   return <IconButton onPress={onPress} icon="delete" style={styles.button} />;
-};
-
-export default Component;
+}
