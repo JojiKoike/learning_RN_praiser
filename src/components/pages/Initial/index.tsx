@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useRef, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import CarouselStatic from 'react-native-snap-carousel';
 import SafeAreaView from 'react-native-safe-area-view';
-import { Carousel } from '../../organisnms';
+import { Carousel } from '../../organisms';
 import { Pagination } from '../../atoms';
 import { COLOR } from '../../../constants/theme';
 import { Context, Status } from '../../../contexts/ui';

@@ -41,10 +41,12 @@ const TodoDisplay = (props: Props) => {
   return (
     <TouchableHighlight style={styles.contentContainer} onPress={onPress}>
       <View style={styles.contentContainer}>
-        <Text style={labelStyle}>{title}</Text>
-        {!!detail && <Text style={styles.detail}>{detail}</Text>}
+        <View>
+          <Text style={labelStyle}>{title}</Text>
+          {!!detail && <Text style={styles.detail}>{detail}</Text>}
+        </View>
+        <Icon name="angle-right" size={32} color={COLOR.WHITE} />
       </View>
-      <Icon name="angle-right" size={32} color={COLOR.WHITE} />
     </TouchableHighlight>
   );
 };
