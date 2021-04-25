@@ -26,6 +26,7 @@
     "react-native-snap-carousel": "3.9.1",
     "react-native-svg": "12.1.1",
     "react-native-svg-charts": "5.4.0",
+    "react-native-svg-path": "^1.0.0",
     "react-native-swipe-list-view": "3.2.7",
     "react-native-vector-icons": "8.1.0"
   },
