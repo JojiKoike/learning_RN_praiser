@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Todos, { Todo } from '../../organisms/Todos';
 import { COLOR } from '../../../constants/theme';
 import { DETAIL, INPUT } from '../../../constants/path';
-import { State } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   container: {
