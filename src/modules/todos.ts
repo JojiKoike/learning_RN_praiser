@@ -57,3 +57,28 @@ export function toggle(id: string) {
     },
   };
 }
+
+export type Action =
+  | Readonly<ReturnType<typeof set>>
+  | Readonly<ReturnType<typeof add>>
+  | Readonly<ReturnType<typeof update>>
+  | Readonly<ReturnType<typeof remove>>
+  | Readonly<ReturnType<typeof toggle>>;
+
+export default function reducer(state = createInitialState(), action: Action) {
+  switch (action.type) {
+    case SET:
+      return action.payload.todos;
+    case ADD:
+      return Todos.add(state, action.payload.todo);
+    case UPDATE:
+      const { payload } = action;
+      return Todos.update(state, payload.id, payload.todo);
+    case REMOVE:
+      return Todos.remove(state, action.payload.id);
+    case TOGGLE:
+      return Todos.toggle(state, action.payload.id);
+    default:
+      return state;
+  }
+}
