@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 
 import appReducer, { createInitialState } from './modules';
 
-const createStore = () => {
+export function createStore() {
   return create(appReducer, createInitialState(), applyMiddleware(thunk));
-};
+}
 
 export default createStore();
