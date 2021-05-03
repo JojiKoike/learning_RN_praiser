@@ -2,9 +2,10 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Todos, { Todo } from '../../organisms/Todos';
+import Todos, { Todo, State as TodosState } from '../../organisms/Todos';
 import { COLOR } from '../../../constants/theme';
 import { DETAIL, INPUT } from '../../../constants/path';
+import testIDs from '../../../constants/testIDs';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
   },
 });
 
+/*
 const todos = [
   {
     id: '1',
@@ -46,8 +48,17 @@ const todos = [
     isDone: true,
   },
 ];
+*/
 
-const Home = () => {
+interface Props {
+  todos: TodosState;
+  actions: {
+    toggleTodo: Todo.DoneButton.ToggleTodo;
+    removeTodo: Todo.DeleteButton.RemoveTodo;
+  };
+}
+
+const Home = (props: Props) => {
   const { navigate } = useNavigation();
   const onPress = React.useCallback(() => {
     navigate(INPUT);
@@ -60,16 +71,15 @@ const Home = () => {
   );
   const actions = React.useMemo(
     () => ({
-      removeTodo: () => {},
-      toggleTodo: () => {},
+      ...props.actions,
       gotoDetail,
     }),
-    [gotoDetail],
+    [gotoDetail, props.actions],
   );
   return (
-    <View style={styles.container}>
-      <Todos isEditable todos={todos} actions={{ ...actions, gotoDetail }} />
-      <TouchableOpacity onPress={onPress} style={styles.button}>
+    <View style={styles.container} testID={testIDs.HOME}>
+      <Todos isEditable todos={props.todos} actions={{ ...actions, gotoDetail }} />
+      <TouchableOpacity onPress={onPress} style={styles.button} testID={testIDs.TODO_OPEN_INPUT_BUTTON}>
         <Icon color={COLOR.PRIMARY} size={24} name="plus" />
       </TouchableOpacity>
     </View>
