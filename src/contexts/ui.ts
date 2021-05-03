@@ -7,11 +7,29 @@ export enum Status {
   AUTHORIZED = 'authorized',
 }
 
+type ErrorState = Error | null;
+export function createErrorInitialState(): ErrorState {
+  return null;
+}
+
+export function createSnackbarInitialState() {
+  return {
+    visible: false,
+    message: '',
+    label: 'Done',
+  };
+}
+type SnackbarState = ReturnType<typeof createSnackbarInitialState>;
+
 export function createApplicationInitialState(): Status {
   return Status.LOADING;
 }
 
 export const Context = React.createContext({
+  error: createErrorInitialState(),
+  setError: (_: ErrorState) => {},
+  snackbar: createSnackbarInitialState(),
+  setSnackbar: (_: SnackbarState) => {},
   applicationState: createApplicationInitialState(),
   setApplicationState: (_: Status) => {},
 });
